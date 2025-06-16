@@ -75,3 +75,5 @@ Packages/
 
 # VS Code
 .vscode/
+
+.fake

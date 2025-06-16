@@ -168,9 +168,10 @@ uv pip install -r requirements.txt
 | 3️⃣ | `02_linear_algebra.py` | Matrix operations & linear systems | Matrix math, decompositions, solving equations |
 | 4️⃣ | `03_neural_networks.py` | Neural networks from scratch | Activations, loss functions, gradients |
 | 5️⃣ | `04_image_processing.py` | Computer vision basics | Convolutions, CNNs, image transforms |
-| 6️⃣ | `working_examples.py` | Curated robust operations | Production-ready MLX patterns |
-| 7️⃣ | `notebooks/` | Interactive experimentation | Jupyter development workflow |
-| 8️⃣ | `swift-examples/` | Swift + MLX integration | Type-safe ML with Swift |
+| 6️⃣ | `05_langgraph_mlx_guide.py` | AI agents with LangGraph + MLX | Agent workflows, local LLMs, tool integration |
+| 7️⃣ | `working_examples.py` | Curated robust operations | Production-ready MLX patterns |
+| 8️⃣ | `notebooks/` | Interactive experimentation | Jupyter development workflow |
+| 9️⃣ | `swift-examples/` | Swift + MLX integration | Type-safe ML with Swift |
 
 ### 📚 Detailed File Breakdown
 
@@ -225,6 +226,18 @@ uv pip install -r requirements.txt
 • Image transformations (flip, rotate, resize)
 • Color space operations (RGB ↔ Grayscale)
 • Hybrid MLX-NumPy techniques for complex ops
+```
+
+#### 🤖 **05_langgraph_mlx_guide.py** - AI Agent Integration
+
+```python
+# Building intelligent agents with LangGraph + MLX:
+• Agent workflow orchestration with LangGraph
+• Local LLM inference with MLX-LM
+• MLX-powered mathematical reasoning tools
+• Computer vision capabilities for agents
+• Privacy-first, Apple Silicon-optimized AI workflows
+• Real-world use cases and performance benefits
 ```
 
 #### ✅ **working_examples.py** - Production-Ready Code
