@@ -23,9 +23,9 @@ struct LinearAlgebra {
         print("\n1. 📊 Matrix Operations")
         print(String(repeating: "-", count: 30))
         
-        let A = MLXArray([[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
-        let B = MLXArray([[7.0, 8.0], [9.0, 10.0], [11.0, 12.0]])
-        
+        let A = MLXArray([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], [2, 3])
+        let B = MLXArray([7.0, 8.0, 9.0, 10.0, 11.0, 12.0], [3, 2])
+
         print("Matrix A (2×3): \(A.shape)")
         print("Matrix B (3×2): \(B.shape)")
         
@@ -35,12 +35,13 @@ struct LinearAlgebra {
         print("Result: \(C)")
         
         // Element-wise operations
-        let squareMatrix = MLXArray([[1.0, 2.0], [3.0, 4.0]])
+        let squareMatrix = MLXArray([1.0, 2.0, 3.0, 4.0], [2, 2])
         let elementWise = squareMatrix * squareMatrix
         print("Element-wise multiplication: \(elementWise)")
-        
+
         // Transpose
-        print("A transpose (3×2): \(A.T.shape)")
+        let AT = A.transposed()
+        print("A transpose (3×2): \(AT.shape)")
     }
     
     static func linearSystems() {
@@ -70,10 +71,10 @@ struct LinearAlgebra {
         print("\n3. 🔬 Matrix Decompositions")
         print(String(repeating: "-", count: 30))
         
-        let matrix = MLXArray([[4.0, 2.0, 1.0],
-                               [2.0, 3.0, 2.0],
-                               [1.0, 2.0, 5.0]])
-        
+        let matrix = MLXArray([4.0, 2.0, 1.0,
+                               2.0, 3.0, 2.0,
+                               1.0, 2.0, 5.0], [3, 3])
+
         print("Matrix (3×3): \(matrix.shape)")
         
         // QR Decomposition
@@ -144,10 +145,10 @@ struct LinearAlgebra {
         
         // Demonstrate broadcasting
         let scaledInput = input * 2.0
-        let normalized = (input - input.mean()) / input.standardDeviation()
-        
+        let normalized = (input - input.mean()) / input.std()
+
         print("Scaled input shape: \(scaledInput.shape)")
         print("Normalized input mean: \(normalized.mean())")
-        print("Normalized input std: \(normalized.standardDeviation())")
+        print("Normalized input std: \(normalized.std())")
     }
 }

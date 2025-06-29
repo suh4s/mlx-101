@@ -12,6 +12,7 @@ dependencies = [
     "pillow>=8.0.0",
     "mlx-lm>=0.25.2",
     "sentence-transformers>=4.1.0",
+    "langgraph>=0.4.8",
 ]
 
 [project.optional-dependencies]

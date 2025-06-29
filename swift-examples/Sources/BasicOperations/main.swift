@@ -26,7 +26,7 @@ struct BasicOperations {
         
         // Create arrays from Swift arrays
         let arr1 = MLXArray([1, 2, 3, 4, 5])
-        print("From Swift array: \(arr1)")
+        print("From Swift array: shape \(arr1.shape)")
         
         // Create with specific shapes
         let zeros = MLXArray.zeros([3, 4])
@@ -47,31 +47,33 @@ struct BasicOperations {
         let a = MLXArray([1, 2, 3, 4])
         let b = MLXArray([5, 6, 7, 8])
         
-        print("Array a: \(a)")
-        print("Array b: \(b)")
+        print("Array a: shape \(a.shape)")
+        print("Array b: shape \(b.shape)")
         
         // Element-wise operations
         let sum = a + b
         let product = a * b
         let power = pow(a, 2)
         
-        print("a + b: \(sum)")
-        print("a * b: \(product)")
-        print("a²: \(power)")
+        print("a + b: shape \(sum.shape)")
+        print("a * b: shape \(product.shape)")
+        print("a²: shape \(power.shape)")
         
         // Scalar operations
         let scalarAdd = a + 10
         let scalarMul = a * 3
         
-        print("a + 10: \(scalarAdd)")
-        print("a * 3: \(scalarMul)")
+        print("a + 10: shape \(scalarAdd.shape)")
+        print("a * 3: shape \(scalarMul.shape)")
     }
     
     static func arrayManipulation() {
         print("\n3. 📐 Array Manipulation")
         print(String(repeating: "-", count: 30))
         
-        let matrix = MLXArray([[1, 2, 3], [4, 5, 6]])
+        // Create matrix using flat array with shape
+        let flatData = [1, 2, 3, 4, 5, 6]
+        let matrix = MLXArray(flatData, [2, 3])
         print("Original matrix (2×3): \(matrix.shape)")
         
         // Transpose
@@ -91,9 +93,9 @@ struct BasicOperations {
         let mean = matrix.mean()
         let max = matrix.max()
         
-        print("Sum: \(sum)")
-        print("Mean: \(mean)")
-        print("Max: \(max)")
+        print("Sum: \(sum.item(Int.self))")
+        print("Mean: \(mean.item(Float.self))")
+        print("Max: \(max.item(Int.self))")
     }
     
     static func randomOperations() {
@@ -111,8 +113,12 @@ struct BasicOperations {
         print("Normal random (2×4): \(normal.shape)")
         
         // Statistics
-        print("Uniform mean: \(uniform.mean())")
-        print("Normal std: \(normal.standardDeviation())")
+        print("Uniform mean: \(uniform.mean().item(Float.self))")
+        // Use standard deviation calculation
+        let normalMean = normal.mean()
+        let variance = ((normal - normalMean) * (normal - normalMean)).mean()
+        let std = sqrt(variance)
+        print("Normal std: \(std.item(Float.self))")
     }
     
     static func interoperabilityDemo() {
