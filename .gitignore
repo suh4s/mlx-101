@@ -72,6 +72,23 @@ DerivedData
 .build/
 Packages/
 *.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+Package.resolved
+
+# Swift binaries and executables
+*.dSYM/
+*.o
+*.a
+*.dylib
+*.so
+*.dll
+
+# Swift compilation artifacts
+.swiftpm/
+DerivedData/
+*.xcarchive
+
+# Git directories inside dependencies
+**/.git/
 
 # VS Code
 .vscode/
