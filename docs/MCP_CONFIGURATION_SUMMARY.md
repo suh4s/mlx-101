@@ -7,12 +7,18 @@ This document provides a comprehensive overview of all MCP servers configured ac
 1. **Cline MCP Configuration**: `.cline/mcp.json`
 2. **VSCode MCP Configuration**: `~/Library/Application Support/Code/User/settings.json` (under the `mcp` key)
 3. **Cline Settings**: `~/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
+4. **Environment Variables**: `.env` (local, not in version control)
+5. **Environment Template**: `.env.example` (in version control)
 
 ## Summary of Changes Made
 
 ✅ **Updated VSCode settings.json** to include all MCP servers from your Cline configuration
 ✅ **Added input prompts** for GitHub token configuration in VSCode
 ✅ **Standardized server configurations** across both Cline and VSCode
+✅ **Created .env file** for secure credential management
+✅ **Created .env.example** for repository sharing
+✅ **Updated all configurations** to use environment variables instead of hardcoded credentials
+✅ **Fixed Git push protection** by removing sensitive data from tracked files
 
 ## Complete List of MCP Servers (Now Synchronized)
 
@@ -155,11 +161,66 @@ The VSCode configuration now includes input prompts for:
 2. **GitHub Toolsets**: Configurable toolset selection
 3. **GitHub Read-Only**: Toggle for read-only mode
 
+## Environment Variables Setup
+
+### Required Environment Variables
+The following environment variables are required for MCP servers to function properly:
+
+```bash
+# GitHub Configuration
+GITHUB_PERSONAL_ACCESS_TOKEN=your_github_token_here
+GITHUB_TOOLSETS=
+GITHUB_READ_ONLY=
+
+# Notion Configuration
+NOTION_API_KEY=your_notion_api_key_here
+
+# Tavily Configuration
+TAVILY_API_KEY=your_tavily_api_key_here
+
+# Context7 Configuration
+DEFAULT_MINIMUM_TOKENS=
+
+# Supabase Configuration
+SUPABASE_ACCESS_TOKEN=your_supabase_access_token_here
+```
+
+### Setting Up Your Environment
+1. Copy `.env.example` to `.env`: `cp .env.example .env`
+2. Edit the `.env` file and replace placeholder values with your actual API keys
+3. The `.env` file is already in `.gitignore` and won't be committed to version control
+
+### How to Get API Keys
+
+#### GitHub Personal Access Token
+1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+2. Click "Generate new token (classic)"
+3. Select scopes based on your needs (repos, issues, pull_requests, etc.)
+4. Copy the generated token to your `.env` file
+
+#### Notion API Key
+1. Go to https://www.notion.so/my-integrations
+2. Click "New integration"
+3. Give it a name and select the workspace
+4. Copy the "Internal Integration Token" to your `.env` file
+
+#### Tavily API Key
+1. Sign up at https://tavily.com/
+2. Go to your dashboard
+3. Copy your API key to your `.env` file
+
+#### Supabase Access Token
+1. Go to your Supabase project dashboard
+2. Navigate to Settings → API
+3. Copy the service role key to your `.env` file
+
 ## Security Considerations
 
-🔒 **API Keys and Tokens**: All sensitive credentials are properly configured in environment variables
+🔒 **Environment Variables**: All sensitive credentials now stored in `.env` file
+🔒 **Version Control**: `.env` file is excluded from Git, only `.env.example` is committed
 🔒 **Local Servers**: Some servers use local file paths for better security and performance
 🔒 **Docker Isolation**: GitHub server runs in Docker for security isolation
+🔒 **No Hardcoded Secrets**: All configuration files now use environment variable references
 
 ## Restart Required
 
